@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from "./components/routes/Home"
+import { Routes, Route} from "react-router-dom"
+import NavigationBar from "./components/routes/NavigationBar";
+import RegisterForm from "./components/routes/RegisterForm";
+import { observer } from "mobx-react-lite";
+import LoginForm from "./components/routes/LoginForm";
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<NavigationBar/>}>
+        <Route index element={<Home/>} />
+        <Route path="register" element={<RegisterForm/>} />
+        <Route path="login" element={<LoginForm/>} />
+      </Route>      
+    </Routes>
   );
 }
 
-export default App;
+export default observer(App);
